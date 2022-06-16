@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardPostsController;
 use App\Models\Post;
 use App\Models\Category;
 use Illuminate\Foundation\Auth\User;
@@ -61,35 +62,4 @@ Route::get('/dashboard', function () {
     ]);
 })->middleware('auth');
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Route::get('/categories/{category:slug}', function (Category $category) {
-//     return view('posts', [
-//         "title" => "Post Category : $category->name", 
-//         "active" => 'categories',
-//         "posts" => $category->posts->load('category', 'author')
-
-//     ]);
-// });
-
-// Route::get('/authors/{author:username}', function(User $author) {
-//     return view('posts', [
-//         "title" => "Post Author By : $author->name", 
-//         "posts" => $author->posts,
-//         "author" => $author->name
-//     ]);
-// });
+Route::resource('/dashboard/posts', DashboardPostsController::class)->middleware('auth');
