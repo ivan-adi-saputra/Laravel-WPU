@@ -7,7 +7,13 @@
             <div class="col-md-8">
                 <h3 class="mb-3">{{ $post->title }}</h3>
                 <p>By <a href="/post?author={{ $post->author->username }}" class="text-decoration-none">{{ $post->author->name }}</a> on <a href="/posts?category={{ $post->category->slug }}" class="text-decoration-none">{{ $post->category->name }}</a></p>
-                <img src="/img/unsplash.jpg" alt="{{ $post->category->name }}" width="700" height="400" class="img-fluid">
+                @if( $post->image )
+                        <div style="max-height: 350px; overflow:hidden;">
+                            <img src="{{ asset('storage/' . $post->image) }}" alt="{{ $post->category->name }}" class="img-fluid">
+                        </div>
+                    @else 
+                        <img src="/img/unsplash.jpg" alt="{{ $post->category->name }}" width="700" height="400" class="img-fluid">
+                    @endif
                 <article class="my-3 fs-5">
                     {!! $post->body !!}
                 </article>
