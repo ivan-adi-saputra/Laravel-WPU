@@ -8,6 +8,10 @@
       <div class="alert alert-success col-lg-8" role="alert"> 
         {{ session('success') }}
       </div>
+      @elseif(session()->has('delete'))
+        <div class="alert alert-danger col-lg-8" role="alert"> 
+          {{ session('delete') }}
+        </div>
     @endif
     <div class="table-responsive col-lg-8">
         <a href="/dashboard/posts/create" class="btn btn-primary mb-3">Create new post</a>
